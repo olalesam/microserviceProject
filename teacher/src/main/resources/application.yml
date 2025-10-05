@@ -1,6 +1,8 @@
+server:
+  port: 8081
 spring:
   application:
-    name: department-microservice
+    name: teacher
   datasource:
     url: 'jdbc:h2:~/test'
   h2:
