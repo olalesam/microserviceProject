@@ -20,4 +20,3 @@ public class Department {
     private String depName;
     private String depCode;
 }
-

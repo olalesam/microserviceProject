@@ -12,3 +12,4 @@ public class DepartmentDto {
     private String depName;
     private String depCode;
 }
+
