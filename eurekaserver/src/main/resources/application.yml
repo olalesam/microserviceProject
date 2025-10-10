@@ -6,13 +6,18 @@ spring:
     name: eurekaserver
   cloud:
     config:
-      enabled: false          # Désactive le client Spring Cloud Config
+      enabled: false
       discovery:
-        enabled: false        # Ne pas chercher le Config Server via Eureka
+        enabled: false
   config:
-    import: ""                # IMPORTANT : s?assurer qu?aucun "configserver:" n?est importé
+    import: ""
 
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+
+  server:
+    enable-self-preservation: true
+#    renewal-percent-threshold: 0.85
+#    viction-interval-timer-in-ms: 60000
