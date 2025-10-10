@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 public class TeacherApplication {
@@ -20,7 +21,14 @@ public class TeacherApplication {
             teacherRepository.save(Teacher.builder()
                     .firstName("Olale")
                     .lastName("Sam")
+                    .depCode("IT")
                     .build());
 
     }
+
+    @Bean
+    public WebClient webClient(){
+        return WebClient.builder().build();
+    }
+// comments
 }

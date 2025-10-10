@@ -1,22 +1,32 @@
-// package com.olale.teacher.controller;
-
 package com.olale.teacher.controller;
 
+import com.olale.teacher.dto.APIResponseDto;
 import com.olale.teacher.dto.TeacherDto;
+import com.olale.teacher.entities.Teacher;
+import com.olale.teacher.repo.TeacherRepository;
 import com.olale.teacher.service.TeacherService;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/teachers")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class TeacherController {
-
-    private final TeacherService teacherService;
-
-    @GetMapping("/{id}")
-    public ResponseEntity<TeacherDto> getTeacherById(@PathVariable Long id) {
-        return ResponseEntity.ok(teacherService.getTeacherById(id));
+    private TeacherService teachersService;
+    private final TeacherRepository repo;
+    @GetMapping("{id}")
+    public ResponseEntity<APIResponseDto> getTeacherById(@PathVariable("id")
+                                                         Long id )
+    {
+        return new ResponseEntity<APIResponseDto>(teachersService.getTeacherById(id), HttpStatus.OK);
     }
+    @GetMapping("/all")
+    public List<Teacher> all() { return repo.findAll();}
 }
