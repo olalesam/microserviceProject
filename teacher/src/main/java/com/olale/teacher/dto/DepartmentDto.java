@@ -3,12 +3,15 @@ package com.olale.teacher.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TeacherDto {
+public class DepartmentDto {
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String depName;
     private String depCode;
+
 }
+
+
