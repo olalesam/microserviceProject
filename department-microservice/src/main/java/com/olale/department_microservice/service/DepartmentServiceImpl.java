@@ -5,22 +5,15 @@ import com.olale.department_microservice.entities.Department;
 import com.olale.department_microservice.repos.DepartmentRepository;
 import lombok.AllArgsConstructor;
 import lombok.ToString;
-<<<<<<< HEAD
-=======
-import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> dev
+
 import org.springframework.stereotype.Service;
 
 @ToString
 @Service
 @AllArgsConstructor
-<<<<<<< HEAD
-public class DepartmentServiceImpl implements DepartmentService {
-=======
 
 public class DepartmentServiceImpl implements DepartmentService {
 
->>>>>>> dev
     private final DepartmentRepository departmentRepository;
 
     @Override

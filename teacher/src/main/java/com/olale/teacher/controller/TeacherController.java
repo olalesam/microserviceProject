@@ -1,25 +1,22 @@
+// package com.olale.teacher.controller;
+
 package com.olale.teacher.controller;
 
 import com.olale.teacher.dto.TeacherDto;
 import com.olale.teacher.service.TeacherService;
-import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/teachers")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TeacherController {
-    private TeacherService teachersService;
-    @GetMapping("{id}")
-    public ResponseEntity<TeacherDto> getTeacherById(@PathVariable("id")
-                                                     Long id )
-    {
-        return new ResponseEntity<TeacherDto>(
-                teachersService.getTeacherById(id), HttpStatus.OK);
+
+    private final TeacherService teacherService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TeacherDto> getTeacherById(@PathVariable Long id) {
+        return ResponseEntity.ok(teacherService.getTeacherById(id));
     }
 }
