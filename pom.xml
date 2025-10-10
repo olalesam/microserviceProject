@@ -35,5 +35,6 @@
     <modules>
         <module>department-microservice</module>
         <module>teacher</module>
+        <module>eurekaserver</module>
     </modules>
 </project>

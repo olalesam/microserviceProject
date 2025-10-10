@@ -1,0 +1,18 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eurekaserver
+  cloud:
+    config:
+      enabled: false          # Désactive le client Spring Cloud Config
+      discovery:
+        enabled: false        # Ne pas chercher le Config Server via Eureka
+  config:
+    import: ""                # IMPORTANT : s?assurer qu?aucun "configserver:" n?est importé
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
