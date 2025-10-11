@@ -4,25 +4,31 @@ server:
 spring:
   application:
     name: DEPARTMENT-MICROSERVICE
+  profiles:
+    active: "default"   # active le profil 'prod' par défaut
+
   datasource:
     url: jdbc:h2:mem:departmentdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driver-class-name: org.h2.Driver
+
   h2:
     console:
       enabled: true
       path: /h2-console
+
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
+
   cloud:
     config:
       enabled: false
     discovery:
       enabled: true
 
-eureka:                                # ← à la RACINE
+eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
@@ -39,3 +45,15 @@ management:
   endpoint:
     shutdown:
       enabled: true
+
+build:
+  version: "1.0"
+
+author:
+  name: "default"
+  email: "default@example.com"
+
+# (optionnel pour diagnostiquer le chargement des fichiers)
+# logging:
+#   level:
+#     org.springframework.boot.context.config: DEBUG
