@@ -29,4 +29,9 @@ public class TeacherController {
     }
     @GetMapping("/all")
     public List<Teacher> all() { return repo.findAll();}
+
+    @GetMapping("/deleteAll")
+    public  void delete() {
+        repo.deleteAll();
+    }
 }

@@ -17,16 +17,16 @@ public class TeacherApplication {
 		SpringApplication.run(TeacherApplication.class, args);
 	}
 
-    @Bean
-    CommandLineRunner commandLineRunner(TeacherRepository teacherRepository) {
-        return args ->
-            teacherRepository.save(Teacher.builder()
-                    .firstName("Olale")
-                    .lastName("Sam")
-                    .depCode("IT")
-                    .build());
-
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunner(TeacherRepository teacherRepository) {
+//        return args ->
+//            teacherRepository.save(Teacher.builder()
+//                    .firstName("Olale")
+//                    .lastName("Sam")
+//                    .depCode("IT")
+//                    .build());
+//
+//    }
 
     @Bean
     public WebClient webClient(){

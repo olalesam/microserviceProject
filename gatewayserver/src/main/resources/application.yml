@@ -1,0 +1,48 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: gatewayserver
+  cloud:
+    config:
+      enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: department
+          uri: lb://DEPARTMENT-MICROSERVICE
+          predicates:
+            - Path=/department-microservice/**
+          filters:
+            - StripPrefix=1
+        - id: teacher
+          uri: lb://TEACHER-MICROSERVICE   # ← corrige: correspond au nom du service
+          predicates:
+            - Path=/teacher/**
+          filters:
+            - StripPrefix=1
+
+eureka:                                # ← à la RACINE
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: "http://localhost:8761/eureka/"
+  instance:
+    prefer-ip-address: true
+
+management:
+  server:
+    port: 9001
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,info,gateway
+  endpoint:
+    gateway:
+      enabled: true
