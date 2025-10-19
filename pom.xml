@@ -37,6 +37,7 @@
         <module>teacher</module>
         <module>eurekaserver</module>
         <module>gatewayserver</module>
+        <module>configserver</module>
     </modules>
 </project>
 
