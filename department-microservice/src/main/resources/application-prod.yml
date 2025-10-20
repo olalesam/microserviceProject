@@ -1,7 +1,0 @@
-spring:
-  config:
-    activate:
-      on-profile: prod
-author:
- name: "olale sam [PROD]"
- email: "olalesam@gmail.com [PROD]"

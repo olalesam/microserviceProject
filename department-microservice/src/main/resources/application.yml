@@ -3,9 +3,9 @@ server:
 
 spring:
   application:
-    name: DEPARTMENT-MICROSERVICE
+    name: department
   profiles:
-    active:  "default" # active le profil 'prod' par défaut
+    active: prod
 
   datasource:
     url: jdbc:h2:mem:departmentdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
@@ -22,11 +22,12 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
 
-  cloud:
-    config:
-      enabled: false
-    discovery:
-      enabled: true
+  # <-- active la récupération depuis le Config Server (ne pas mettre enabled: false ici)
+  config:
+    import: "optional:configserver:http://localhost:9999/"
+
+  discovery:
+    enabled: true
 
 eureka:
   client:
@@ -45,15 +46,3 @@ management:
   endpoint:
     shutdown:
       enabled: true
-
-build:
-  version: "1.0"
-
-author:
-  name: "default"
-  email: "default@example.com"
-
-# (optionnel pour diagnostiquer le chargement des fichiers)
-# logging:
-#   level:
-#     org.springframework.boot.context.config: DEBUG
