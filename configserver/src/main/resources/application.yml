@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: native    # <--- important : active le profile native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: "file:/Users/olale/Documents/java/microserviceProject/config-repo"  #classpath:/config, file:./config
+
+server:
+  port: 9999
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
