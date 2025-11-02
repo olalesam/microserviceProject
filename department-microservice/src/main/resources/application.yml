@@ -1,3 +1,6 @@
+build:
+  version: "1.0.0-SNAPSHOT"
+
 server:
   port: 8080
 
@@ -8,33 +11,33 @@ spring:
     active: prod
 
   datasource:
-    url: jdbc:h2:mem:departmentdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    driver-class-name: org.h2.Driver
-
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    url: jdbc:mysql://localhost:3306/test?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    # driver-class-name: com.mysql.cj.jdbc.Driver  # optionnel, auto-détecté
 
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.H2Dialect
+    # ❌ supprime l’ancienne ligne H2
+    # database-platform: org.hibernate.dialect.H2Dialect
+    # ✅ soit tu ne mets rien (auto-détection), soit :
+    database-platform: org.hibernate.dialect.MySQLDialect
+    # ou MySQL8 si tu préfères :
+    # database-platform: org.hibernate.dialect.MySQL8Dialect
 
-  # <-- active la récupération depuis le Config Server (ne pas mettre enabled: false ici)
-  config:
-    import: "optional:configserver:http://localhost:9999/"
-
-  discovery:
-    enabled: true
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
 
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: "http://localhost:8761/eureka/"
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false
   instance:
     prefer-ip-address: true
 
